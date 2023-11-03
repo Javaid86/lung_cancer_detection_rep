@@ -1,7 +1,7 @@
 # Import necessary libraries
 import streamlit as st
-import tensorflow as tf
-from tensorflow.keras.preprocessing import image
+# import tensorflow as tf
+from keras.preprocessing import image
 import numpy as np
 
 
@@ -10,12 +10,12 @@ def preprocess_image(image_path, target_size=(150, 150)):
     img = image.load_img(image_path, target_size=target_size)
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
-    img = tf.keras.applications.mobilenet_v2.preprocess_input(img)
+    img = keras.applications.mobilenet_v2.preprocess_input(img)
     return img
 
 
 # Load a pre-trained model for lung cancer prediction
-model = tf.keras.models.load_model('model_trained.h5')
+model = keras.models.load_model('model_trained.h5')
 
 # Streamlit app header
 st.title('Lung Cancer Prediction App')
